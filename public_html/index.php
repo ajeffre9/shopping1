@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -338,44 +335,42 @@
             <p id = "total">Total: $<span>
             <input id="textField3" type="text" value="0.00" align="right" size="13" disabled="true"/></span></p>
 
+            <script src="https://checkout.stripe.com/checkout.js"></script>
+            <button id="customButton">Purchase</button>
+            <script type="text/javascript">
+              var handler = StripeCheckout.configure({
+                key: 'pk_test_O4pwxsOKukpCDGYSWmFJvYp3',
+                token: function(token) {
+                  // Use the token to create the charge with a server-side script.
+                  // You can access the token ID with `token.id`
+                }
+              });
 
+              document.getElementById('customButton').addEventListener('click', function(e) {
+                // This line is the only real modification...
+                var amount = $("#textField3").val() * 100;
+                handler.open({
+                  name: "Blue Clothing & Leather",
+                  description: "Card Payment",
+                  // ... aside from this line where we use the value.
+                  amount: amount
+                });
+                e.preventDefault();
+              });
+            </script>
 
-    <script src="https://checkout.stripe.com/checkout.js"></script>
-    <button id="customButton">Purchase</button>
-    <script type="text/javascript">
-      var handler = StripeCheckout.configure({
-        key: 'pk_test_O4pwxsOKukpCDGYSWmFJvYp3',
-        token: function(token) {
-          // Use the token to create the charge with a server-side script.
-          // You can access the token ID with `token.id`
-        }
-      });
-
-      document.getElementById('customButton').addEventListener('click', function(e) {
-        // This line is the only real modification...
-        var amount = $("#textField3").val() * 100;
-        handler.open({
-          name: "Blue Clothing & Leather",
-          description: "Card Payment",
-          // ... aside from this line where we use the value.
-          amount: amount
-        });
-        e.preventDefault();
-      });
-    </script>
-
-       <!--  <form action="" method="POST">
-          <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_O4pwxsOKukpCDGYSWmFJvYp3"
-            data-amount="999"
-            data-name="Blue Clothing & Leather"
-            data-description="Card Payment"
-            data-locale="auto"
-            data-currency="cad">
-          </script>
-        </form> -->
-         </div>
+               <!--  <form action="" method="POST">
+                  <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_O4pwxsOKukpCDGYSWmFJvYp3"
+                    data-amount="999"
+                    data-name="Blue Clothing & Leather"
+                    data-description="Card Payment"
+                    data-locale="auto"
+                    data-currency="cad">
+                  </script>
+                </form> -->
+        </div>
     </div>
 
     <br>
@@ -428,105 +423,103 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
-        <script type="text/javascript" src="fancybox/jquery.easing-1.3.pack.js"></script>
-        <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.js"></script>
-        <script type="text/javascript" src="cloud-zoom/cloud-zoom.1.0.2.js"></script>
-        <script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                /*
-                fancybox init on each cloud-zoom element
-                 */
-                $("#content .cloud-zoom").fancybox({
-                    'transitionIn'  :   'elastic',
-                    'transitionOut' :   'none',
-                    'speedIn'       :   600,
-                    'speedOut'      :   200,
-                    'overlayShow'   :   true,
-                    'overlayColor'  :   '#000',
-                    'cyclic'        :   true,
-                    'easingIn'      :   'easeInOutExpo'
-                });
+    <script type="text/javascript" src="fancybox/jquery.easing-1.3.pack.js"></script>
+    <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script type="text/javascript" src="cloud-zoom/cloud-zoom.1.0.2.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            /*
+            fancybox init on each cloud-zoom element
+             */
+            $("#content .cloud-zoom").fancybox({
+                'transitionIn'  :   'elastic',
+                'transitionOut' :   'none',
+                'speedIn'       :   600,
+                'speedOut'      :   200,
+                'overlayShow'   :   true,
+                'overlayColor'  :   '#000',
+                'cyclic'        :   true,
+                'easingIn'      :   'easeInOutExpo'
+            });
 
-                /*
-                because the cloud zoom plugin draws a mousetrap
-                div on top of the image, the fancybox click needs
-                to be changed. What we do here is to trigger the click
-                the fancybox expects, when we click the mousetrap div.
-                We know the mousetrap div is inserted after
-                the <a> we want to click:
-                 */
-                $("#content .mousetrap").live('click',function(){
-                    $(this).prev().trigger('click');
-                });
+            /*
+            because the cloud zoom plugin draws a mousetrap
+            div on top of the image, the fancybox click needs
+            to be changed. What we do here is to trigger the click
+            the fancybox expects, when we click the mousetrap div.
+            We know the mousetrap div is inserted after
+            the <a> we want to click:
+             */
+            $("#content .mousetrap").live('click',function(){
+                $(this).prev().trigger('click');
+            });
 
-                /*
-                the content element;
-                each list item / group with several images
-                 */
-                var $content    = $('#content'),
-                $thumb_list = $content.find('.thumb > ul');
-                /*
-                we need to set the width of each ul (sum of the children width);
-                we are also defining the click events on the right and left arrows
-                of each item.
-                 */
-                $thumb_list.each(function(){
-                    var $this_list  = $(this),
-                    total_w     = 0,
-                    loaded      = 0,
-                    //preload all the images first
-                    $images     = $this_list.find('img'),
-                    total_images= $images.length;
-                    $images.each(function(){
-                        var $img    = $(this);
-                        $('<img/>').load(function(){
-                            ++loaded;
-                            if (loaded == total_images){
-                                $this_list.data('current',0).children().each(function(){
-                                    total_w += $(this).width();
-                                });
-                                $this_list.css('width', total_w + 'px');
+            /*
+            the content element;
+            each list item / group with several images
+             */
+            var $content    = $('#content'),
+            $thumb_list = $content.find('.thumb > ul');
+            /*
+            we need to set the width of each ul (sum of the children width);
+            we are also defining the click events on the right and left arrows
+            of each item.
+             */
+            $thumb_list.each(function(){
+                var $this_list  = $(this),
+                total_w     = 0,
+                loaded      = 0,
+                //preload all the images first
+                $images     = $this_list.find('img'),
+                total_images= $images.length;
+                $images.each(function(){
+                    var $img    = $(this);
+                    $('<img/>').load(function(){
+                        ++loaded;
+                        if (loaded == total_images){
+                            $this_list.data('current',0).children().each(function(){
+                                total_w += $(this).width();
+                            });
+                            $this_list.css('width', total_w + 'px');
 
-                                //next / prev events
+                            //next / prev events
 
-                                $this_list.parent()
-                                .siblings('.next')
-                                .bind('click',function(e){
-                                    var current = $this_list.data('current');
-                                    if(current == $this_list.children().length -1) return false;
-                                    var next    = ++current,
-                                    ml      = -next * $this_list.children(':first').width();
+                            $this_list.parent()
+                            .siblings('.next')
+                            .bind('click',function(e){
+                                var current = $this_list.data('current');
+                                if(current == $this_list.children().length -1) return false;
+                                var next    = ++current,
+                                ml      = -next * $this_list.children(':first').width();
 
-                                    $this_list.data('current',next)
-                                    .stop()
-                                    .animate({
-                                        'marginLeft'    : ml + 'px'
-                                    },400);
-                                    e.preventDefault();
-                                })
-                                .end()
-                                .siblings('.prev')
-                                .bind('click',function(e){
-                                    var current = $this_list.data('current');
-                                    if(current == 0) return false;
-                                    var prev    = --current,
-                                    ml      = -prev * $this_list.children(':first').width();
+                                $this_list.data('current',next)
+                                .stop()
+                                .animate({
+                                    'marginLeft'    : ml + 'px'
+                                },400);
+                                e.preventDefault();
+                            })
+                            .end()
+                            .siblings('.prev')
+                            .bind('click',function(e){
+                                var current = $this_list.data('current');
+                                if(current == 0) return false;
+                                var prev    = --current,
+                                ml      = -prev * $this_list.children(':first').width();
 
-                                    $this_list.data('current',prev)
-                                    .stop()
-                                    .animate({
-                                        'marginLeft'    : ml + 'px'
-                                    },400);
-                                    e.preventDefault();
-                                });
-                            }
-                        }).attr('src',$img.attr('src'));
-                    });
+                                $this_list.data('current',prev)
+                                .stop()
+                                .animate({
+                                    'marginLeft'    : ml + 'px'
+                                },400);
+                                e.preventDefault();
+                            });
+                        }
+                    }).attr('src',$img.attr('src'));
                 });
             });
-        </script>
-
+        });
+    </script>
 </body>
-
 </html>
