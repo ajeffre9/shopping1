@@ -12,7 +12,7 @@
     <title>Blue Clothing & Leather</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
 
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
@@ -310,14 +310,9 @@
                             </form>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
     <!-- /.container -->
 
