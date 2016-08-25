@@ -314,7 +314,7 @@
     <!-- /.container -->
 
 
-    <!--<div class="container" id="cart">
+    <div class="container" id="cart">
 
         <div class="col-md-3">
             <h1 id="shop" class="lead">Shopping Cart</h1>
