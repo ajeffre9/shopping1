@@ -314,7 +314,7 @@
     <!-- /.container -->
 
 
-    <div class="container" id="cart">
+    <!--<div class="container" id="cart">
 
         <div class="col-md-3">
             <h1 id="shop" class="lead">Shopping Cart</h1>
@@ -359,7 +359,7 @@
               });
             </script>
 
-               <!--  <form action="" method="POST">
+                 <form action="" method="POST">
                   <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_O4pwxsOKukpCDGYSWmFJvYp3"
@@ -369,9 +369,9 @@
                     data-locale="auto"
                     data-currency="cad">
                   </script>
-                </form> -->
+                </form> 
         </div>
-    </div>
+    </div> -->
 
     <br>
 
@@ -394,10 +394,10 @@
     </div>
 
 
-    <?php
+    
     // Set your secret key: remember to change this to your live secret key in production
     // See your keys here https://dashboard.stripe.com/account/apikeys
-    \Stripe\Stripe::setApiKey("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+    <!--\Stripe\Stripe::setApiKey("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
     // Get the credit card details submitted by the form
     $token = $_POST['stripeToken'];
@@ -414,7 +414,7 @@
       // The card has been declined
     }
 
-    ?>
+    ?>-->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
