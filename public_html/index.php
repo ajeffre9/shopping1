@@ -314,7 +314,7 @@
     <!-- /.container -->
 
 
-    <div class="container" id="cart">
+     <div class="container" id="cart">
 
         <div class="col-md-3">
             <h1 id="shop" class="lead">Shopping Cart</h1>
@@ -362,7 +362,7 @@
                  <form action="" method="POST">
                   <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_O4pwxsOKukpCDGYSWmFJvYp3"
+                    data-key="sk_test_PnEIQV00rQ5jjyrndkHmVg7h"
                     data-amount="999"
                     data-name="Blue Clothing & Leather"
                     data-description="Card Payment"
