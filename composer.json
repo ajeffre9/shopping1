@@ -15,9 +15,9 @@
     "stripe/stripe-php": "2.*"
   },
 
-  {
-    "require": {
-      "stripe/stripe-php": "3.*"
-    }
+  
+  "require": {
+    "stripe/stripe-php": "3.*"
   }
+  
 }
